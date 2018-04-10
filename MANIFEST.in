@@ -1,0 +1,5 @@
+nclude LICENSE
+include README.md
+recursive-include django_cool_paginator/templates *
+recursive-include docs *
+
