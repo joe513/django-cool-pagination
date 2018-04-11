@@ -68,7 +68,7 @@ def size():
             return 'pagination-sm'
 
 
-@register.inclusion_tag('paginators/paginator.html', takes_context=True)
+@register.inclusion_tag('__paginators/paginator.html', takes_context=True)
 def cool_paginate(context, page_obj=None):
     return_dict = {
         'request': context['request'],
