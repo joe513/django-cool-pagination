@@ -8,6 +8,15 @@ register = template.Library()
 
 # TODO IMPROVE ALL THE DOCSTRINGS!
 
+# next_name tag
+register.simple_tag(name='next_name', func=lambda: settings.COOL_PAGINATOR_NEXT_NAME
+                    if hasattr(settings, 'COOL_PAGINATOR_NEXT_NAME') else '&raquo;')
+
+
+# previous_name tag
+register.simple_tag(name='previous_name', func=lambda: settings.COOL_PAGINATOR_PREVIOUS_NAME
+                    if hasattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME') else '&laquo;')
+
 
 @register.simple_tag(takes_context=True)
 def url_replace(context, field, value):
