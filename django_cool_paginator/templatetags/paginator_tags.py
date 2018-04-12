@@ -1,5 +1,5 @@
 """
-Tags for pagination template which is in templates/__paginator_s
+Tags for pagination template which is in templates/__paginators
 
 Based on project settings.
 """
