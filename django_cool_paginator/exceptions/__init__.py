@@ -1,1 +1,1 @@
-from .tag_exceptions import PaginatorNotPointed
+from .tag_exceptions import PaginatorNotSpecified

@@ -1,5 +1,5 @@
 """
-Tags for pagination template which is in templates/__pagiantors
+Tags for pagination template which is in templates/__paginator_s
 
 Based on project settings.
 """
@@ -75,16 +75,18 @@ def ellipsis_or_number(context, paginator, current_page):
 
 
 @register.simple_tag
-def size():
+def size(chosen_size=None):
     """
     Points to pagination table size.
 
     :return: str or None
     """
 
+    if chosen_size == 'LARGE':
+        return 'pagination-lg'
+    if chosen_size == 'SMALL':
+        return 'pagination-sm'
     if COOL_PAGINATOR_SIZE == 'LARGE':
         return 'pagination-lg'
     if COOL_PAGINATOR_SIZE == 'SMALL':
         return 'pagination-sm'
-
-

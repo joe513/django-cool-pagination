@@ -1,2 +1,2 @@
-class PaginatorNotPointed(Exception):
+class PaginatorNotSpecified(Exception):
     pass
