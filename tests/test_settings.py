@@ -1,0 +1,8 @@
+SECRET_KEY = 'fake-key'
+
+INSTALLED_APPS = [
+    "tests",
+]
+
+COOL_PAGINATOR_SIZE = 'LARGE'
+COOL_PAGINATOR_NEXT_NAME = 'Next'

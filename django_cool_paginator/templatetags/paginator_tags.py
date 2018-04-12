@@ -1,21 +1,33 @@
+"""
+Tags for pagination template which is in templates/__pagiantors
+
+Based on project settings.
+"""
+
 from django import template
 from django.conf import settings
-
-from django_cool_paginator.exceptions import PaginatorNotPointed
-
-register = template.Library()
 
 
 # TODO IMPROVE ALL THE DOCSTRINGS!
 
-# next_name tag
-register.simple_tag(name='next_name', func=lambda: settings.COOL_PAGINATOR_NEXT_NAME
-                    if hasattr(settings, 'COOL_PAGINATOR_NEXT_NAME') else '&raquo;')
+register = template.Library()
 
+
+# PAGINATION_SETTINGS
+
+COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', '&raquo;')
+COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', '&laquo;')
+COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
+
+
+# Tags...
+
+
+# next_name tag
+next_name = register.simple_tag(name='next_name', func=lambda: COOL_PAGINATOR_NEXT_NAME)
 
 # previous_name tag
-register.simple_tag(name='previous_name', func=lambda: settings.COOL_PAGINATOR_PREVIOUS_NAME
-                    if hasattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME') else '&laquo;')
+previous_name = register.simple_tag(name='previous_name', func=lambda: COOL_PAGINATOR_PREVIOUS_NAME)
 
 
 @register.simple_tag(takes_context=True)
@@ -70,26 +82,9 @@ def size():
     :return: str or None
     """
 
-    if hasattr(settings, 'COOL_PAGINATOR_SIZE'):
-        if settings.COOL_PAGINATOR_SIZE == 'LARGE':
-            return 'pagination-lg'
-        if settings.COOL_PAGINATOR_SIZE == 'SMALL':
-            return 'pagination-sm'
+    if COOL_PAGINATOR_SIZE == 'LARGE':
+        return 'pagination-lg'
+    if COOL_PAGINATOR_SIZE == 'SMALL':
+        return 'pagination-sm'
 
 
-@register.inclusion_tag('__paginators/paginator.html', takes_context=True)
-def cool_paginate(context, page_obj=None):
-    return_dict = {
-        'request': context['request'],
-    }
-
-    if page_obj is not None:
-        return_dict['page_obj'] = page_obj
-    else:
-        try:
-            return_dict['page_obj'] = context['page_obj']
-        except KeyError:
-            raise PaginatorNotPointed("You customized standard paginator name, "
-                                      "but didn't point it in {% cool_paginate %} tag.")
-
-    return return_dict
