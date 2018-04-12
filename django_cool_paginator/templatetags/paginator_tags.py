@@ -15,8 +15,8 @@ register = template.Library()
 
 # PAGINATION_SETTINGS
 
-COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', '&raquo;')
-COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', '&laquo;')
+COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', 'Next')
+COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', 'Previous')
 COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
 
 
@@ -90,3 +90,4 @@ def size(chosen_size=None):
         return 'pagination-lg'
     if COOL_PAGINATOR_SIZE == 'SMALL':
         return 'pagination-sm'
+    return ''

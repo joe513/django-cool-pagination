@@ -19,6 +19,6 @@ def cool_paginate(context, page_obj=None, size=None):
             return_dict['page_obj'] = context['page_obj']
         except KeyError:
             raise PaginatorNotSpecified("You customized standard paginator name, "
-                                        "but didn't specified it in {% cool_paginate %} tag.")
+                                        "but haven't specified it in {% cool_paginate %} tag.")
 
     return return_dict
