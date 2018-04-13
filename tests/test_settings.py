@@ -18,5 +18,6 @@ TEMPLATES = [
     }
 ]
 
+# TODO Make all these working dynamically in tests.py
 COOL_PAGINATOR_SIZE = 'LARGE'
 COOL_PAGINATOR_NEXT_NAME = 'Next'

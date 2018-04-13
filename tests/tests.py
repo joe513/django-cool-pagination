@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 
 from django_cool_paginator.templatetags import paginator_tags
 
-# TODO Optimize Custom Tag testing
+# TODO Optimize Paginator Tag testing
 
 
 class PaginatorTagTest(SimpleTestCase):
@@ -16,7 +16,6 @@ class PaginatorTagTest(SimpleTestCase):
         paginator = Paginator([str(x) for x in range(30)], 5)
         page = paginator.get_page(3)
         template = self.Template.render(Context({'request': HttpRequest(), 'page_obj': page, 'current_page': 4}))
-        print(template)
 
     def test_size(self):
         self.assertEqual(paginator_tags.size(), 'pagination-lg')

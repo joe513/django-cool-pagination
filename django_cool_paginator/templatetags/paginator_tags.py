@@ -24,10 +24,12 @@ COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
 
 
 # next_name tag
-next_name = register.simple_tag(name='next_name', func=lambda: COOL_PAGINATOR_NEXT_NAME)
+next_name = register.simple_tag(name='next_name', func=lambda name=None: COOL_PAGINATOR_NEXT_NAME
+                                if name is None else name)
 
 # previous_name tag
-previous_name = register.simple_tag(name='previous_name', func=lambda: COOL_PAGINATOR_PREVIOUS_NAME)
+previous_name = register.simple_tag(name='previous_name', func=lambda name=None: COOL_PAGINATOR_PREVIOUS_NAME
+                                    if name is None else name)
 
 
 @register.simple_tag(takes_context=True)
