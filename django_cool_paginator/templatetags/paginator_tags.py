@@ -24,12 +24,10 @@ COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
 
 
 # next_name tag
-next_name = register.simple_tag(name='next_name', func=lambda name=None: COOL_PAGINATOR_NEXT_NAME
-                                if name is None else name)
+next_name = register.simple_tag(name='next_name', func=lambda name=None: name or COOL_PAGINATOR_NEXT_NAME)
 
 # previous_name tag
-previous_name = register.simple_tag(name='previous_name', func=lambda name=None: COOL_PAGINATOR_PREVIOUS_NAME
-                                    if name is None else name)
+previous_name = register.simple_tag(name='previous_name', func=lambda name=None: name or COOL_PAGINATOR_PREVIOUS_NAME)
 
 
 @register.simple_tag(takes_context=True)
@@ -51,7 +49,6 @@ def url_replace(context, field, value):
 
 @register.simple_tag(takes_context=True)
 def ellipsis_or_number(context, paginator, current_page):
-
     """
     To avoid display a long page table
 

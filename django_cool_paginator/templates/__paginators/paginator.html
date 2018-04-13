@@ -9,11 +9,11 @@
 
     {% if page_obj.has_previous %}
       <li class="page-item">
-        <a class="page-link" href="?{% url_replace 'page' page_obj.previous_page_number %}">{% previous_name %}</a>
+        <a class="page-link" href="?{% url_replace 'page' page_obj.previous_page_number %}">{% previous_name name=previous_name %}</a>
       </li>
     {% else %}
       <li class="page-item disabled">
-        <a class="page-link" href="#">{% previous_name %}</a>
+        <a class="page-link" href="#">{% previous_name name=previous_name %}</a>
       </li>
     {% endif %}
 
@@ -28,11 +28,11 @@
 
   {% if page_obj.has_next %}
       <li class="page-item">
-        <a class="page-link" href="?{% url_replace 'page' page_obj.next_page_number %}">{% next_name %}</a>
+        <a class="page-link" href="?{% url_replace 'page' page_obj.next_page_number %}">{% next_name name=next_name %}</a>
       </li>
   {% else %}
       <li class="page-item disabled">
-        <a class="page-link" href="#">{% next_name %}</a>
+        <a class="page-link" href="#">{% next_name name=next_name %}</a>
       </li>
   {% endif %}
 
