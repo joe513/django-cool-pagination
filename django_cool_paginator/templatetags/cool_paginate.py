@@ -16,8 +16,10 @@ def cool_paginate(context, page=None, size=None, next_name=None, previous_name=N
     try:
         return_dict['request'] = context['request']
     except KeyError:
-        raise RequestNotExists('Unable to find request in your template context,'
-                               'please make sure that you have the request context processor enabled')
+        raise RequestNotExists(
+            'Unable to find request in your template context,'
+            'please make sure that you have the request context processor enabled'
+        )
 
     if page is not None:
         return_dict['page_obj'] = page
@@ -25,7 +27,9 @@ def cool_paginate(context, page=None, size=None, next_name=None, previous_name=N
         try:
             return_dict['page_obj'] = context['page_obj']
         except KeyError:
-            raise PaginatorNotSpecified('You customized paginator standard name, '
-                                        "but haven't specified it in {% cool_paginate %} tag.")
+            raise PaginatorNotSpecified(
+                'You customized paginator standard name, '
+                "but haven't specified it in {% cool_paginate %} tag."
+            )
 
     return return_dict
