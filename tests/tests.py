@@ -24,7 +24,7 @@ class PaginatorTagTest(SimpleTestCase):
         self.assertEqual(paginator_tags.next_name(), 'Next')
 
     def test_previous_name(self):
-        self.assertEqual(paginator_tags.previous_name(), '&laquo;')
+        self.assertEqual(paginator_tags.previous_name(), 'Previous')
 
     def test_ellipsis_or_number(self):
         ...
