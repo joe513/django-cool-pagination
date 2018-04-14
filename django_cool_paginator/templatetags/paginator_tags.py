@@ -13,14 +13,14 @@ from django.conf import settings
 register = template.Library()
 
 
-# PAGINATION_SETTINGS
+#                                                     PAGINATION_SETTINGS
 
 COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', 'Next')
 COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', 'Previous')
 COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
 
 
-# Tags...
+#                                                           Tags...
 
 
 # next_name tag
@@ -81,7 +81,7 @@ def size(chosen_size=None):
     :return: str or None
     """
 
-    if chosen_size == 'LARGE':
+    if chosen_size == 'LARGE': # TODO Make it with case
         return 'pagination-lg'
     if chosen_size == 'SMALL':
         return 'pagination-sm'
