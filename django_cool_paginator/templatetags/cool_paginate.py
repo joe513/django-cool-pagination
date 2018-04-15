@@ -8,6 +8,16 @@ register = template.Library()
 
 @register.inclusion_tag('__paginators/paginator.html', takes_context=True)
 def cool_paginate(context, page=None, size=None, next_name=None, previous_name=None):
+    """
+    Main function for pagination process.
+
+    :param context: str
+    :param page: str
+    :param size: str
+    :param next_name: str
+    :param previous_name: str
+    :return:
+    """
     return_dict = {
         'size': size,
         'next_name': next_name,

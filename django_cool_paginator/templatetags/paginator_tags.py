@@ -13,7 +13,7 @@ from django.conf import settings
 register = template.Library()
 
 
-#                                                     PAGINATION_SETTINGS
+#                                                     Pagination settings
 
 COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', 'Next')
 COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', 'Previous')
@@ -78,15 +78,11 @@ def size(chosen_size=None):
     """
     Points to pagination table size.
 
-    :return: str or None
+    :argument chosen_size:None \n
+    :return: str
     """
 
-    if chosen_size == 'LARGE': # TODO Make it with case
-        return 'pagination-lg'
-    if chosen_size == 'SMALL':
-        return 'pagination-sm'
-    if COOL_PAGINATOR_SIZE == 'LARGE':
-        return 'pagination-lg'
-    if COOL_PAGINATOR_SIZE == 'SMALL':
-        return 'pagination-sm'
-    return ''
+    return {
+        'LARGE': 'pagination-lg',
+        'SMALL': 'pagination-sm',
+    }.get(chosen_size or COOL_PAGINATOR_SIZE, '')
