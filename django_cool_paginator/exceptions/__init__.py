@@ -1,1 +1,1 @@
-from .tag_exceptions import PaginatorNotSpecified, RequestNotExists
+from .tag_exceptions import PageNotSpecified, RequestNotExists

@@ -1,7 +1,7 @@
 """
 Tags for pagination template which is in templates/__paginators
 
-Based on project settings.
+Depends on project settings.
 """
 
 from django import template

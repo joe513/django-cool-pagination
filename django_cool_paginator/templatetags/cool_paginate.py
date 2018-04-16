@@ -1,6 +1,6 @@
 from django import template
 
-from django_cool_paginator.exceptions import PaginatorNotSpecified, RequestNotExists
+from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
 # TODO To discuss which name is better for the module cool_paginate or cool_pagination
 
 register = template.Library()
@@ -31,13 +31,13 @@ def cool_paginate(context, page=None, size=None, next_name=None, previous_name=N
             'please make sure that you have the request context processor enabled'
         )
 
-    if page is not None:
+    if page:
         return_dict['page_obj'] = page
     else:
         try:
             return_dict['page_obj'] = context['page_obj']
         except KeyError:
-            raise PaginatorNotSpecified(
+            raise PageNotSpecified(
                 'You customized paginator standard name, '
                 "but haven't specified it in {% cool_paginate %} tag."
             )
