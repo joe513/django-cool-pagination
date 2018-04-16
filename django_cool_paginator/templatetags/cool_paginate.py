@@ -22,13 +22,14 @@ Description:
 from django import template
 
 from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
+
 # TODO To discuss which name is better for the module cool_paginate or cool_pagination
 
 register = template.Library()
 
 
 @register.inclusion_tag('__paginators/paginator.html', takes_context=True)
-def cool_paginate(context, page=None, size=None, next_name=None, previous_name=None):
+def cool_paginate(context, page=None, size=None, next_name=None, previous_name=None, param_name=None):
     """
     Main function for pagination process.
 
@@ -37,12 +38,14 @@ def cool_paginate(context, page=None, size=None, next_name=None, previous_name=N
     :param size: str
     :param next_name: str
     :param previous_name: str
+    :param param_name: str
     :return:
     """
     return_dict = {
         'size': size,
         'next_name': next_name,
         'previous_name': previous_name,
+        'param_name': param_name
     }
     try:
         return_dict['request'] = context['request']

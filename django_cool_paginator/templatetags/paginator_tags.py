@@ -46,7 +46,7 @@ register = template.Library()
 COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', 'Next')
 COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', 'Previous')
 COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
-
+COOL_PAGINATOR_PARAM_NAME = getattr(settings, 'COOL_PAGINATOR_PARAM_NAME', 'page')
 
 #                                                           Tags...
 
@@ -114,3 +114,8 @@ def size(chosen_size=None):
         'LARGE': 'pagination-lg',
         'SMALL': 'pagination-sm',
     }.get(chosen_size or COOL_PAGINATOR_SIZE, '')
+
+
+@register.simple_tag
+def param_name(param):
+    return param or COOL_PAGINATOR_PARAM_NAME

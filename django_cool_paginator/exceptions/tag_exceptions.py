@@ -17,6 +17,7 @@ Description:
 
 """
 
+
 class PageNotSpecified(Exception):
     """Raises in case if page wasn't specified at all"""
     pass
