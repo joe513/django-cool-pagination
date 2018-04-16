@@ -1,3 +1,24 @@
+"""
+Main module for pagination purpose
+
+This module is designed as main. To load it to your template just write:
+
+                        {% load cool_paginate %}
+
+Items:
+    Functions:
+
+        - cool_paginate(context, page=None, size=None, next_name=None, previous_name=None)
+
+Description:
+    Function description:
+
+        cool_paginate:
+            Main function for pagination process.
+
+
+"""
+
 from django import template
 
 from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists

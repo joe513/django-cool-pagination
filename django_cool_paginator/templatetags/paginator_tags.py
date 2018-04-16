@@ -1,7 +1,35 @@
 """
 Tags for pagination template which is in templates/__paginators
 
-Depends on project settings.
+These are internal pagination custom tag functions that are needed by paginator template (paginator.html) 
+which is in templates/__paginators. User doesn't have to interact with them. They are designed as internal.
+
+All of them depend on project settings.
+
+Items:
+    Vars:
+        - COOL_PAGINATOR_NEXT_NAME
+        - COOL_PAGINATOR_PREVIOUS_NAME
+        - COOL_PAGINATOR_SIZE
+
+    Functions:
+        - url_replace(context, field, value)
+        - ellipsis_or_number(context, paginator, current_page)
+        - size(chosen_size=None)
+        - next_name(name=None)
+        - previous_name(name=None)
+
+Description:
+    Function description:
+
+        url_replace: 
+            To avoid GET params loosing
+        ellipsis_or_number: 
+            To avoid display a long page table
+        size:
+            Points to pagination table size.
+            
+
 """
 
 from django import template
