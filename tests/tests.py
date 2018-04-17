@@ -76,15 +76,22 @@ class CoolPaginateTest(SimpleTestCase):
     load = '{% load cool_paginate %}'
 
     def setUp(self):
-        self.paginator = Paginator([... for _ in range(5)], 1)
-        self.page = self.paginator.get_page(2)
+        paginator = Paginator([... for _ in range(5)], 1)
+        page = paginator.get_page(2)
         self.request = HttpRequest()
 
-    def test_page(self):
-        template_string = Template(self.load + '{% cool_paginate page=page %}')
-        self.assertTrue(template_string.render(Context({'request': self.request, 'page': self.page})))
+        self.base_context = {
+            'request': self.request,
+            'page_obj': page,
+        }
 
-        #                               Request doesn't exist
+    def test_page(self):
+        template_string = Template(self.load + '{% cool_paginate %}')
+        self.assertTrue(template_string.render(Context(self.base_context.copy())))
+
+    def test_exception(self):
+        template_string = Template(self.load + '{% cool_paginate %}')
+
         with self.assertRaisesMessage(RequestNotExists,
                                       'Unable to find request in your template context,'
                                       'please make sure that you have the request context processor enabled'
@@ -96,3 +103,55 @@ class CoolPaginateTest(SimpleTestCase):
                                       "but haven't specified it in {% cool_paginate %} tag."
                                       ):
             template_string.render(Context({'request': self.request}))
+
+    def test_size(self):
+
+        context = self.base_context.copy()
+        context['size'] = 'LARGE'
+
+        size_conf = {
+            'LARGE': 'pagination-lg',
+            'SMALL': 'pagination-sm'
+        }
+
+        template_string = Template(self.load + '{% cool_paginate size=size %}')
+        template = template_string.render(Context(context))
+
+        self.assertIn(size_conf[context['size']], template)
+
+        #                              By default
+        context.pop('size')
+        template = template_string.render(Context(context))
+
+        self.assertIn(size_conf[paginator_tags.COOL_PAGINATOR_SIZE], template)
+
+    def test_next_name(self):
+
+        context = self.base_context.copy()
+        context['next_name'] = 'Go to'
+
+        template_string = Template(self.load + '{% cool_paginate next_name=next_name %}')
+        template = template_string.render(Context(context))
+
+        self.assertIn(context['next_name'], template)
+
+        #                             By default
+
+        context.pop('next_name')
+        template = template_string.render(Context(context))
+        self.assertIn(paginator_tags.COOL_PAGINATOR_NEXT_NAME, template)
+
+    def test_previous_name(self):
+
+        context = self.base_context.copy()
+        context['previous_name'] = 'Back to'
+
+        template_string = Template(self.load + '{% cool_paginate previous_name=previous_name %}')
+        template = template_string.render(Context(context))
+
+        self.assertIn(context['previous_name'], template)
+
+        #                           By default
+        context.pop('previous_name')
+        template = template_string.render(Context(context))
+        self.assertIn(paginator_tags.COOL_PAGINATOR_PREVIOUS_NAME, template)

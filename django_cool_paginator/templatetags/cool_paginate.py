@@ -41,6 +41,7 @@ def cool_paginate(context, page=None, size=None, next_name=None, previous_name=N
     :param param_name: str
     :return:
     """
+
     return_dict = {
         'size': size,
         'next_name': next_name,
