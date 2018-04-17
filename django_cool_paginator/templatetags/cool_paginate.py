@@ -36,7 +36,6 @@ def cool_paginate(context, **kwargs):
         'size',
         'next_name',
         'previous_name',
-        'param_name',
         'page_obj'
     )
 

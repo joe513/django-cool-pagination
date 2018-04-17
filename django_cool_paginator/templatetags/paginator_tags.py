@@ -45,7 +45,6 @@ register = template.Library()
 COOL_PAGINATOR_NEXT_NAME = getattr(settings, 'COOL_PAGINATOR_NEXT_NAME', 'Next')
 COOL_PAGINATOR_PREVIOUS_NAME = getattr(settings, 'COOL_PAGINATOR_PREVIOUS_NAME', 'Previous')
 COOL_PAGINATOR_SIZE = getattr(settings, 'COOL_PAGINATOR_SIZE', None)
-COOL_PAGINATOR_PARAM_NAME = getattr(settings, 'COOL_PAGINATOR_PARAM_NAME', 'page')
 
 #                                                           Tags...
 
@@ -56,7 +55,6 @@ next_name = register.simple_tag(name='next_name', func=lambda name=None: name or
 # previous_name tag
 previous_name = register.simple_tag(name='previous_name', func=lambda name=None: name or COOL_PAGINATOR_PREVIOUS_NAME)
 
-param_name = register.simple_tag(name='param_name', func=lambda param: param or COOL_PAGINATOR_PARAM_NAME)
 
 
 @register.simple_tag(takes_context=True)
@@ -89,8 +87,7 @@ def ellipsis_or_number(context, paginator, current_page):
     """
 
     # Checks is it first page
-    chosen_page = int(context['request'].GET[param_name(context.get('param_name'))]) \
-        if param_name(context.get('param_name')) in context['request'].GET else 1
+    chosen_page = int(context['request'].GET['page']) if 'page' in context['request'].GET else 1
 
     if current_page == chosen_page:
         return chosen_page

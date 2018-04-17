@@ -11,7 +11,7 @@
 
     {% if page_obj.has_previous %}
       <li class="page-item">
-        <a class="page-link" href="?{% url_replace param_name page_obj.previous_page_number %}">{% previous_name name=previous_name %}</a>
+        <a class="page-link" href="?{% url_replace 'page' page_obj.previous_page_number %}">{% previous_name name=previous_name %}</a>
       </li>
     {% else %}
       <li class="page-item disabled">
@@ -23,14 +23,14 @@
     {% ellipsis_or_number page_obj.paginator page_num as answer %}
     {% if answer != None %}
     <li class="page-item {% if page_obj.number == page_num %}active{% endif %}">
-        <a class="page-link active" href="?{% url_replace param_name page_num %}">{{ answer }}</a>
+        <a class="page-link active" href="?{% url_replace 'page' page_num %}">{{ answer }}</a>
       </li>
     {% endif %}
   {% endfor %}
 
   {% if page_obj.has_next %}
       <li class="page-item">
-        <a class="page-link" href="?{% url_replace param_name page_obj.next_page_number %}">{% next_name name=next_name %}</a>
+        <a class="page-link" href="?{% url_replace 'page' page_obj.next_page_number %}">{% next_name name=next_name %}</a>
       </li>
   {% else %}
       <li class="page-item disabled">
