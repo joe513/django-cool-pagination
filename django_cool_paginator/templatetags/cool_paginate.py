@@ -38,7 +38,7 @@ def cool_paginate(context, **kwargs):
         'previous_name',
         'param_name',
         'page_obj'
-         )
+    )
 
     return_dict = {name: value for name, value in zip(names, map(kwargs.get, names))}
 
