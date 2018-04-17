@@ -31,12 +31,13 @@ register = template.Library()
 @register.inclusion_tag('__paginators/paginator.html', takes_context=True)
 def cool_paginate(context, **kwargs):
     """Main function for pagination process."""
+
     names = (
-         'size',
-         'next_name',
-         'previous_name',
-         'param_name',
-         'page_obj'
+        'size',
+        'next_name',
+        'previous_name',
+        'param_name',
+        'page_obj'
          )
 
     return_dict = {name: value for name, value in zip(names, map(kwargs.get, names))}
@@ -49,10 +50,13 @@ def cool_paginate(context, **kwargs):
             'please make sure that you have the request context processor enabled'
         )
 
-    if not return_dict.get('page_obj') and not context.get('page_obj'):
-        raise PageNotSpecified(
-            'You customized paginator standard name, '
-            "but haven't specified it in {% cool_paginate %} tag."
-        )
+    if not return_dict.get('page_obj'):
+        if context.get('page_obj'):
+            return_dict['page_obj'] = context['page_obj']
+        else:
+            raise PageNotSpecified(
+                'You customized paginator standard name, '
+                "but haven't specified it in {% cool_paginate %} tag."
+            )
 
     return return_dict
