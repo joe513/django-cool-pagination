@@ -21,6 +21,11 @@ class BaseTest(SimpleTestCase):
             'page_obj': paginator.get_page(4),
         }
 
+        self.size_conf = {
+            'LARGE': 'pagination-lg',
+            'SMALL': 'pagination-sm'
+        }
+
 
 class PaginatorTagTest(BaseTest):
 
@@ -51,24 +56,31 @@ class PaginatorTagTest(BaseTest):
     def test_url_replace(self):
         template_string = Template(self.load + "{% url_replace 'page' number %}")
 
-        template = template_string.render(Context({'request': self.request, 'number': 2}))
+        context = self.base_context.copy()
+        context['number'] = 2
+
+        template = template_string.render(Context(context))
         self.assertEquals(template, 'page=2')
 
     def test_size(self):
         template_string = Template(self.load + '{% size size %}')
 
-        template = template_string.render(Context({'size': 'LARGE'}))
-        self.assertEqual(template, 'pagination-lg')
+        context = {'size': 'LARGE'}
+
+        template = template_string.render(Context(context))
+        self.assertEqual(template, self.size_conf[context['size']])
 
         #                               By default
         template = template_string.render(Context())
-        self.assertEqual(template, 'pagination-sm')
+        self.assertEqual(template, self.size_conf[paginator_tags.COOL_PAGINATOR_SIZE])
 
     def test_previous_name(self):
         template_string = Template(self.load + "{% previous_name name=previous_name %}")
 
-        template = template_string.render(Context({'previous_name': 'Bobby'}))
-        self.assertEqual(template, 'Bobby')
+        previous_name = 'Bobby'
+
+        template = template_string.render(Context({'previous_name': previous_name}))
+        self.assertEqual(template, previous_name)
 
         #                               By default
         template = template_string.render(Context())
@@ -77,8 +89,10 @@ class PaginatorTagTest(BaseTest):
     def test_next_name(self):
         template_string = Template(self.load + "{% next_name name=next_name %}")
 
-        template = template_string.render(Context({'next_name': 'Jack'}))
-        self.assertEqual(template, 'Jack')
+        next_name = 'Jack'
+
+        template = template_string.render(Context({'next_name': next_name}))
+        self.assertEqual(template, next_name)
 
         #                               By default
         template = template_string.render(Context({}))
@@ -113,21 +127,16 @@ class CoolPaginateTest(BaseTest):
         context = self.base_context.copy()
         context['size'] = 'LARGE'
 
-        size_conf = {
-            'LARGE': 'pagination-lg',
-            'SMALL': 'pagination-sm'
-        }
-
         template_string = Template(self.load + '{% cool_paginate size=size %}')
         template = template_string.render(Context(context))
 
-        self.assertIn(size_conf[context['size']], template)
+        self.assertIn(self.size_conf[context['size']], template)
 
         #                              By default
         context.pop('size')
         template = template_string.render(Context(context))
 
-        self.assertIn(size_conf[paginator_tags.COOL_PAGINATOR_SIZE], template)
+        self.assertIn(self.size_conf[paginator_tags.COOL_PAGINATOR_SIZE], template)
 
     def test_next_name(self):
 
