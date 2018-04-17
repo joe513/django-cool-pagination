@@ -8,7 +8,7 @@ This module is designed as main. To load it to your template just write:
 Items:
     Functions:
 
-        - cool_paginate(context, page=None, size=None, next_name=None, previous_name=None)
+        - cool_paginate(context, **kwargs)
 
 Description:
     Function description:
@@ -29,42 +29,30 @@ register = template.Library()
 
 
 @register.inclusion_tag('__paginators/paginator.html', takes_context=True)
-def cool_paginate(context, page=None, size=None, next_name=None, previous_name=None, param_name=None):
-    """
-    Main function for pagination process.
+def cool_paginate(context, **kwargs):
+    """Main function for pagination process."""
+    names = (
+         'size',
+         'next_name',
+         'previous_name',
+         'param_name',
+         'page_obj'
+         )
 
-    :param context: str
-    :param page: str
-    :param size: str
-    :param next_name: str
-    :param previous_name: str
-    :param param_name: str
-    :return:
-    """
+    return_dict = {name: value for name, value in zip(names, map(kwargs.get, names))}
 
-    return_dict = {
-        'size': size,
-        'next_name': next_name,
-        'previous_name': previous_name,
-        'param_name': param_name
-    }
-    try:
+    if context.get('request'):
         return_dict['request'] = context['request']
-    except KeyError:
+    else:
         raise RequestNotExists(
             'Unable to find request in your template context,'
             'please make sure that you have the request context processor enabled'
         )
 
-    if page:
-        return_dict['page_obj'] = page
-    else:
-        try:
-            return_dict['page_obj'] = context['page_obj']
-        except KeyError:
-            raise PageNotSpecified(
-                'You customized paginator standard name, '
-                "but haven't specified it in {% cool_paginate %} tag."
-            )
+    if not return_dict.get('page_obj') and not context.get('page_obj'):
+        raise PageNotSpecified(
+            'You customized paginator standard name, '
+            "but haven't specified it in {% cool_paginate %} tag."
+        )
 
     return return_dict

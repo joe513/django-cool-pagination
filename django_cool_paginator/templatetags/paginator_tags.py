@@ -28,7 +28,6 @@ Description:
             To avoid display a long page table
         size:
             Points to pagination table size.
-            
 
 """
 

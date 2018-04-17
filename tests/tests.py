@@ -6,8 +6,6 @@ from django.core.paginator import Paginator
 from django_cool_paginator.templatetags import paginator_tags
 from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
 
-# TODO Optimize Paginator Tag testing
-
 
 class BaseTest(SimpleTestCase):
 
@@ -28,6 +26,7 @@ class BaseTest(SimpleTestCase):
 
 
 class PaginatorTagTest(BaseTest):
+    """These tests are designed for paginator_tags.py internal module which is in templatetags"""
 
     load = '{% load paginator_tags %}'
 
@@ -100,6 +99,7 @@ class PaginatorTagTest(BaseTest):
 
 
 class CoolPaginateTest(BaseTest):
+    """These tests are designed for cool_paginate function which is in cool_paginate.py module"""
 
     load = '{% load cool_paginate %}'
 
