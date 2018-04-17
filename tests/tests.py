@@ -9,29 +9,43 @@ from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
 # TODO Optimize Paginator Tag testing
 
 
-class PaginatorTagTest(SimpleTestCase):
+class BaseTest(SimpleTestCase):
+
+    def setUp(self):
+        paginator = Paginator([... for _ in range(30)], 5)
+        self.page = paginator.get_page(4)
+        self.request = HttpRequest()
+
+        self.base_context = {
+            'request': self.request,
+            'page_obj': paginator.get_page(4),
+        }
+
+
+class PaginatorTagTest(BaseTest):
 
     load = '{% load paginator_tags %}'
 
-    def setUp(self):
-        self.paginator = Paginator([str(x) for x in range(30)], 5)
-        self.request = HttpRequest()
-
     def test_ellipsis_or_number(self):
         template_string = Template(self.load + '{% ellipsis_or_number page_obj.paginator page_numb %}')
-        page = self.paginator.get_page(4)
 
         self.request.GET['page'] = 5
 
-        template = template_string.render(Context({'request': self.request, 'page_obj': page, 'page_numb': 5}))
+        context = self.base_context.copy()
+        context['page_numb'] = 5
+
+        template = template_string.render(Context(context))
         self.assertEqual(int(template), 5)
 
-        template = template_string.render(Context({'request': self.request, 'page_obj': page, 'page_numb': 8}))
+        context['page_numb'] = 8
+
+        template = template_string.render(Context(context))
         self.assertEqual(template, '...')
 
         self.request.GET['page'] = 1
+        context['page_numb'] = 7
 
-        template = template_string.render(Context({'request': self.request, 'page_obj': page, 'page_numb': 7}))
+        template = template_string.render(Context(context))
         self.assertEqual(template, str(None))
 
     def test_url_replace(self):
@@ -71,19 +85,9 @@ class PaginatorTagTest(SimpleTestCase):
         self.assertEqual(template, paginator_tags.COOL_PAGINATOR_NEXT_NAME)
 
 
-class CoolPaginateTest(SimpleTestCase):
+class CoolPaginateTest(BaseTest):
 
     load = '{% load cool_paginate %}'
-
-    def setUp(self):
-        paginator = Paginator([... for _ in range(5)], 1)
-        page = paginator.get_page(2)
-        self.request = HttpRequest()
-
-        self.base_context = {
-            'request': self.request,
-            'page_obj': page,
-        }
 
     def test_page(self):
         template_string = Template(self.load + '{% cool_paginate %}')
@@ -136,7 +140,6 @@ class CoolPaginateTest(SimpleTestCase):
         self.assertIn(context['next_name'], template)
 
         #                             By default
-
         context.pop('next_name')
         template = template_string.render(Context(context))
         self.assertIn(paginator_tags.COOL_PAGINATOR_NEXT_NAME, template)
