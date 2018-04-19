@@ -1,7 +1,7 @@
 """
 Tags for pagination template which is in templates/__paginators
 
-These are internal pagination custom tag functions that are needed by paginator template (paginator.html) 
+These are internal pagination custom tag functions that are needed by paginator template (paginator.html)
 which is in templates/__paginators. User doesn't have to interact with them. They are designed as internal.
 
 All of them depend on project settings.
@@ -22,9 +22,9 @@ Items:
 Description:
     Function description:
 
-        url_replace: 
+        url_replace:
             To avoid GET params loosing
-        ellipsis_or_number: 
+        ellipsis_or_number:
             To avoid display a long page table
         size:
             Points to pagination table size.
@@ -54,7 +54,6 @@ next_name = register.simple_tag(name='next_name', func=lambda name=None: name or
 
 # previous_name tag
 previous_name = register.simple_tag(name='previous_name', func=lambda name=None: name or COOL_PAGINATOR_PREVIOUS_NAME)
-
 
 
 @register.simple_tag(takes_context=True)
