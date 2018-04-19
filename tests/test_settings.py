@@ -17,8 +17,7 @@ TEMPLATES = [
     }
 ]
 
-# TODO Make all these working dynamically in tests.py
+
 COOL_PAGINATOR_SIZE = 'SMALL'
 COOL_PAGINATOR_NEXT_NAME = 'Go'
 COOL_PAGINATOR_PREVIOUS_NAME = 'Previous'
-COOL_PAGINATOR_PARAM_NAME = 'page'

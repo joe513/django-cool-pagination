@@ -11,12 +11,12 @@ class BaseTest(SimpleTestCase):
 
     def setUp(self):
         paginator = Paginator([... for _ in range(30)], 5)
-        self.page = paginator.get_page(4)
+        self.page = paginator.page(4)
         self.request = HttpRequest()
 
         self.base_context = {
             'request': self.request,
-            'page_obj': paginator.get_page(4),
+            'page_obj': paginator.page(4),
         }
 
         self.size_conf = {
