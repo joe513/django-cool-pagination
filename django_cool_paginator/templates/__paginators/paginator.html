@@ -1,10 +1,5 @@
 {% load paginator_tags %}
 
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-
   <ul class="pagination {% size size %}">
 
     {% if page_obj.has_previous %}
@@ -37,5 +32,3 @@
   {% endif %}
 
   </ul>
-
-</body>
