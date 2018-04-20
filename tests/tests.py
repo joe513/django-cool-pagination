@@ -132,7 +132,7 @@ class CoolPaginateTest(BaseTest):
 
         self.assertIn(self.size_conf[context['size']], template)
 
-        #                              By default
+        #                               By default
         context.pop('size')
         template = template_string.render(Context(context))
 
@@ -148,7 +148,7 @@ class CoolPaginateTest(BaseTest):
 
         self.assertIn(context['next_name'], template)
 
-        #                             By default
+        #                               By default
         context.pop('next_name')
         template = template_string.render(Context(context))
         self.assertIn(paginator_tags.COOL_PAGINATOR_NEXT_NAME, template)
@@ -163,7 +163,7 @@ class CoolPaginateTest(BaseTest):
 
         self.assertIn(context['previous_name'], template)
 
-        #                           By default
+        #                               By default
         context.pop('previous_name')
         template = template_string.render(Context(context))
         self.assertIn(paginator_tags.COOL_PAGINATOR_PREVIOUS_NAME, template)

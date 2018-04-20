@@ -88,14 +88,11 @@ def ellipsis_or_number(context, paginator, current_page):
     # Checks is it first page
     chosen_page = int(context['request'].GET['page']) if 'page' in context['request'].GET else 1
 
-    if current_page == chosen_page:
-        return chosen_page
-
     if current_page in (chosen_page + 3, chosen_page - 3):
         return '...'
 
     if current_page in (chosen_page + 1, chosen_page + 2, chosen_page - 1,
-                        chosen_page - 2, paginator.num_pages, paginator.num_pages - 1, 1, 2):
+                        chosen_page - 2, paginator.num_pages, paginator.num_pages - 1, 1, 2, chosen_page):
         return current_page
 
 
