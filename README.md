@@ -4,7 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/joe513/django-cool-pagination/badge.svg?branch=master)](https://coveralls.io/github/joe513/django-cool-pagination?branch=master)
 [![PyPI version](https://badge.fury.io/py/django-cool-pagination.svg)](https://badge.fury.io/py/django-cool-pagination)
 
-
 *django-cool-pagination* is simple pagination app that saves your time.
 
 ## WARNING:
