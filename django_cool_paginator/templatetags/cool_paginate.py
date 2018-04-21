@@ -16,7 +16,6 @@ Description:
         cool_paginate:
             Main function for pagination process.
 
-
 """
 
 from django import template

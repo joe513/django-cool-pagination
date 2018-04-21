@@ -7,14 +7,26 @@
 *django-cool-pagination* is simple pagination app that saves your time.
 
 ## WARNING:
- **The project is on development stage, some things may not work properly.**
+ **The project is still on development stage, some things may not work properly.**
+ 
+ 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Old_book_bindings.jpg/1280px-Old_book_bindings.jpg" />
+
 ## Prerequisites
 Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/download) to your project.
-
-## Installing:
-### PIP
+## Features
+   - _Dynamic query string creation_
+   - _Length auto control_
+   - _Fully customizable_ (aspiring)
+   
+## Installing
+### pip
 
     pip install django-cool-pagination
+### setup.py
+    git clone https://github.com/joe513/django-cool-pagination.git
+    cd django-cool-pagination
+    python setup.py install
 
 ## Using
 
@@ -44,7 +56,27 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
     
     {% cool_paginate %}
 
+## Customization
+You can customize it so that it works as you want. Customize it by defining settings either in setting.py or 
+inside of {% cool_paginate %} 
+https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Old_book_bindings.jpg/1280px-Old_book_bindings.jpg
 
+#### setting.py
+
+`COOL_PAGINATOR_NEXT_NAME` - Name for "next" button in pagination bar. <br/>
+`COOL_PAGINATOR_PREVIOUS_NAME` - Name for "prevous" button in pagination bar <br/>
+`COOL_PAGINATOR_SIZE` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
+
+
+#### {% cool_paginate page_obj='' next_name='' previous_name='' size='' %}
+`page_obj` - Type here your 'page' object. <br/>
+`next_name` - Name for "next" button in pagination bar. <br/>
+`previous_name` - Name for "prevous" button in pagination bar <br/>
+`size` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
+
+
+> **Note:**
+> {% cool_paginate %} has a priority, _django-cool-pagination_ will firstly look at this, after at setting.py
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details
