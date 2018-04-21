@@ -19,14 +19,31 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
    - _Length auto control_
    - _Fully customizable_ (aspiring)
    
-## Installing
-### pip
-
+## Installation
+### Installing
+#### pip
     pip install django-cool-pagination
-### setup.py
+#### setup.py
     git clone https://github.com/joe513/django-cool-pagination.git
     cd django-cool-pagination
     python setup.py install
+### Setting up
+#### Add to `INSTALLED_APPS`
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        
+        'django_cool_paginator'
+#### Make sure `request` is in `context_processors`
+        'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
 
 ## Using
 
@@ -54,7 +71,9 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
         ...
     {% endfor %}
     
-    {% cool_paginate %}
+    {% cool_paginate page_obj=ENTER HERE YOUR PAGE OBJECT! %}
+> **Note:**
+You don't have to write page_obj if it's page_obj by default.
 
 ## Customization
 You can customize it so that it works as you want. Customize it by defining settings either in setting.py or 
