@@ -58,8 +58,7 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
 
 ## Customization
 You can customize it so that it works as you want. Customize it by defining settings either in setting.py or 
-inside of {% cool_paginate %} 
-https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Old_book_bindings.jpg/1280px-Old_book_bindings.jpg
+inside of `{% cool_paginate %} `
 
 #### setting.py
 
