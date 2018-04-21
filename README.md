@@ -63,22 +63,24 @@ inside of `{% cool_paginate %} `
 #### setting.py
 
 `COOL_PAGINATOR_NEXT_NAME` - Name for "next" button in pagination bar. <br/>
-`COOL_PAGINATOR_PREVIOUS_NAME` - Name for "prevous" button in pagination bar <br/>
+`COOL_PAGINATOR_PREVIOUS_NAME` - Name for "previous" button in pagination bar <br/>
 `COOL_PAGINATOR_SIZE` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
 
 
 #### {% cool_paginate page_obj='' next_name='' previous_name='' size='' %}
-`page_obj` - Type here your 'page' object. <br/>
+`page_obj` - Type here your page object. <br/>
 `next_name` - Name for "next" button in pagination bar. <br/>
-`previous_name` - Name for "prevous" button in pagination bar <br/>
+`previous_name` - Name for "previous" button in pagination bar <br/>
 `size` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
 
 
 > **Note:**
-> {% cool_paginate %} has a priority, _django-cool-pagination_ will firstly look at this, after at setting.py
+> `{% cool_paginate %}` has a priority, _django-cool-pagination_ will firstly look at this, after at setting.py
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details
 <hr/>
 
-_inspired by [inoks/m3u8](https://github.com/inoks/m3u8)_ 
+
+_inspired by [inoks/m3u8](https://github.com/inoks/m3u8)_
+ 
