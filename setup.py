@@ -8,10 +8,10 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-cool-pagination',
-    version='0.2.0',
+    version='0.2.1',
     packages=find_packages(),
     include_package_data=True,
-    license='MIT License ',
+    license='MIT License',
     description='Simple pagination app that saves your time.',
     long_description=README,
     url='https://github.com/joe513/django-cool-pagination',
