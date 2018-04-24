@@ -13,12 +13,16 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Old_book_bindings.jpg/1280px-Old_book_bindings.jpg" />
 
 ## Prerequisites
-Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/download) to your project.
-## Features
+Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/download) to your project. <br/>
+<img class="center" src="https://i.imgur.com/5FK3tt6.png" />
+
+## Features 
+<img class="center" alt="paris" src="https://i.imgur.com/uMNye7P.png" />
+
    - _Dynamic query string creation_
    - _Length auto control_
    - _Fully customizable_ (aspiring)
-   
+
 ## Installation
 ### Installing
 #### pip
@@ -46,6 +50,7 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
                     'django.contrib.messages.context_processors.messages',
 
 ## Using
+<img src="https://i.imgur.com/fMhJAro.png" />
 
 ### View
 #### FBV (Function based view)
@@ -72,6 +77,7 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
     {% endfor %}
     
     {% cool_paginate page_obj=ENTER HERE YOUR PAGE OBJECT! %}
+
 > **Note:**
 You don't have to specify `page` if its name is `page_obj` as default.
 
@@ -84,14 +90,14 @@ inside of `{% cool_paginate %} `
 `COOL_PAGINATOR_NEXT_NAME` - Name for "next" button in pagination bar. <br/>
 `COOL_PAGINATOR_PREVIOUS_NAME` - Name for "previous" button in pagination bar <br/>
 `COOL_PAGINATOR_SIZE` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
+`COOL_PAGINATOR_ELASTIC` - What page width is elastic mode enabled from?
 
-
-#### {% cool_paginate page_obj next_name previous_name size %}
+#### {% cool_paginate page_obj next_name previous_name size elastic %}
 `page_obj` - Type here your page object. <br/>
 `next_name` - Name for "next" button in pagination bar. <br/>
 `previous_name` - Name for "previous" button in pagination bar <br/>
 `size` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
-
+`elastic` - What page width is elastic mode enabled from?
 
 > **Note:**
 > `{% cool_paginate %}` has a priority, _django-cool-pagination_ will firstly look at this, after at setting.py

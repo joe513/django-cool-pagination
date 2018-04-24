@@ -21,13 +21,14 @@ Description:
 from django import template
 
 from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
+from django.conf import settings
 
 # TODO To discuss which name is better for the module cool_paginate or cool_pagination
 
 register = template.Library()
 
 
-@register.inclusion_tag('__paginators/paginator.html', takes_context=True)
+@register.inclusion_tag('__paginator.html', takes_context=True)
 def cool_paginate(context, **kwargs):
     """Main function for pagination process."""
 
@@ -35,7 +36,8 @@ def cool_paginate(context, **kwargs):
         'size',
         'next_name',
         'previous_name',
-        'page_obj'
+        'elastic',
+        'page_obj',
     )
 
     return_dict = {name: value for name, value in zip(names, map(kwargs.get, names))}
@@ -56,5 +58,8 @@ def cool_paginate(context, **kwargs):
                 'You customized paginator standard name, '
                 "but haven't specified it in {% cool_paginate %} tag."
             )
+
+    if not return_dict.get('elastic'):
+        return_dict['elastic'] = getattr(settings, 'COOL_PAGINATOR_ELASTIC', 10)
 
     return return_dict

@@ -1,7 +1,7 @@
 """
 Tags for pagination template which is in templates/__paginators
 
-These are internal pagination custom tag functions that are needed by paginator template (paginator.html)
+These are internal pagination custom tag functions that are needed by paginator template (__paginator.html)
 which is in templates/__paginators. User doesn't have to interact with them. They are designed as internal.
 
 All of them depend on project settings.
@@ -61,9 +61,9 @@ def url_replace(context, field, value):
     """
     To avoid GET params loosing
 
-    :param context:
-    :param field:
-    :param value:
+    :param context: context_obj
+    :param field: str
+    :param value: str
     :return: dict-like object
     """
 
@@ -79,7 +79,7 @@ def ellipsis_or_number(context, paginator, current_page):
     To avoid display a long page table
 
     :param context: template context
-    :param paginator: Paginator obj
+    :param paginator: paginator_obj
     :param current_page: int
     :return: str or None
 
@@ -101,7 +101,7 @@ def size(chosen_size=None):
     """
     Points to pagination table size.
 
-    :argument chosen_size:None \n
+    :param chosen_size: int
     :return: str
     """
 

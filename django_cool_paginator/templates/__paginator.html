@@ -1,4 +1,4 @@
-{% load paginator_tags %}
+{% load __paginator_tags %}
 
   <ul class="pagination {% size size %}">
 
@@ -12,7 +12,7 @@
     </li>
   {% endif %}
 
-  {% if page_obj.paginator.num_pages < 10 %}
+  {% if page_obj.paginator.num_pages < elastic %}
     {% for page_num in page_obj.paginator.page_range %}
       <li class="page-item {% if page_obj.number == page_num %}active{% endif %}">
           <a class="page-link active" href="?{% url_replace 'page' page_num %}">{{ page_num }}</a>
