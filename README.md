@@ -50,7 +50,6 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
                     'django.contrib.messages.context_processors.messages',
 
 ## Using
-<img src="https://i.imgur.com/fMhJAro.png" />
 
 ### View
 #### FBV (Function based view)
