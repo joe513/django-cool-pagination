@@ -73,7 +73,7 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](h
     
     {% cool_paginate page_obj=ENTER HERE YOUR PAGE OBJECT! %}
 > **Note:**
-You don't have to write page_obj if it's page_obj by default.
+You don't have to specify `page` if its name is `page_obj` as default.
 
 ## Customization
 You can customize it so that it works as you want. Customize it by defining settings either in setting.py or 
@@ -86,7 +86,7 @@ inside of `{% cool_paginate %} `
 `COOL_PAGINATOR_SIZE` - Size of pagination bar (choose: "LARGE" or "SMALL") <br/>
 
 
-#### {% cool_paginate page_obj='' next_name='' previous_name='' size='' %}
+#### {% cool_paginate page_obj next_name previous_name size %}
 `page_obj` - Type here your page object. <br/>
 `next_name` - Name for "next" button in pagination bar. <br/>
 `previous_name` - Name for "previous" button in pagination bar <br/>
