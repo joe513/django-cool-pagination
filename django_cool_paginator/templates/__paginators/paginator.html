@@ -15,7 +15,7 @@
   {% if page_obj.paginator.num_pages < 10 %}
     {% for page_num in page_obj.paginator.page_range %}
       <li class="page-item {% if page_obj.number == page_num %}active{% endif %}">
-          <a class="page-link active" href="?{% url_replace 'page' page_num %}">{{ answer }}</a>
+          <a class="page-link active" href="?{% url_replace 'page' page_num %}">{{ page_num }}</a>
       </li>
   {% endfor %}
   {% else %}
