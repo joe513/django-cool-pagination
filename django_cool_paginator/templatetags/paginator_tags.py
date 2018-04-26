@@ -1,10 +1,10 @@
 """
-Tags for pagination template which is in templates/__paginators
+Tags for pagination template which is templates directory
 
 These are internal pagination custom tag functions that are needed by paginator template (__paginator.html)
-which is in templates/__paginators. User doesn't have to interact with them. They are designed as internal.
+which is in templates directory. User doesn't have to interact with them. They are designed as internal.
 
-All of them depend on project settings.
+Most of them depend on project settings.
 
 Items:
     Vars:
@@ -35,8 +35,6 @@ from django import template
 from django.conf import settings
 
 
-# TODO IMPROVE ALL THE DOCSTRINGS!
-
 register = template.Library()
 
 
@@ -59,7 +57,7 @@ previous_name = register.simple_tag(name='previous_name', func=lambda name=None:
 @register.simple_tag(takes_context=True)
 def url_replace(context, field, value):
     """
-    To avoid GET params loosing
+    To avoid GET params losing
 
     :param context: context_obj
     :param field: str
@@ -76,7 +74,7 @@ def url_replace(context, field, value):
 @register.simple_tag(takes_context=True)
 def ellipsis_or_number(context, paginator, current_page):
     """
-    To avoid display a long page table
+    To avoid display a long pagination bar
 
     :param context: template context
     :param paginator: paginator_obj
@@ -88,18 +86,19 @@ def ellipsis_or_number(context, paginator, current_page):
     # Checks is it first page
     chosen_page = int(context['request'].GET['page']) if 'page' in context['request'].GET else 1
 
-    if current_page in (chosen_page + 3, chosen_page - 3):
-        return '...'
-
     if current_page in (chosen_page + 1, chosen_page + 2, chosen_page - 1,
                         chosen_page - 2, paginator.num_pages, paginator.num_pages - 1, 1, 2, chosen_page):
         return current_page
+
+    if current_page in (chosen_page + 3, chosen_page - 3):
+        return '...'
+
 
 
 @register.simple_tag
 def size(chosen_size=None):
     """
-    Points to pagination table size.
+    Points to pagination bar size.
 
     :param chosen_size: int
     :return: str
