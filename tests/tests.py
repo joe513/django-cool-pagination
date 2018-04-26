@@ -169,17 +169,13 @@ class CoolPaginateTest(BaseTest):
         self.assertIn(paginator_tags.COOL_PAGINATOR_PREVIOUS_NAME, template)
 
     def test_elastic(self):
+
         context = self.base_context.copy()
         context['elastic'] = 5
 
-        standard_template = Template(self.load + '{% cool_paginate %}').render(Context(context)).strip()
-        template = Template(self.load + '{% cool_paginate elastic=elastic %}').render(Context(context)).strip()
-
-        self.assertHTMLNotEqual(standard_template, template)
+        standard_template = Template(self.load + '{% cool_paginate elastic=elastic%}').render(Context(context)).strip()
 
         context['elastic'] = 10
+        template = Template(self.load + '{% cool_paginate elastic=elastic%}').render(Context(context)).strip()
 
-        template = Template(self.load + '{% cool_paginate elastic=elastic %}').render(Context(context)).strip()
-        standard_template = Template(self.load + '{% cool_paginate %}').render(Context(context)).strip()
-
-        self.assertHTMLEqual(standard_template, template)
+        self.assertHTMLNotEqual(template, standard_template)

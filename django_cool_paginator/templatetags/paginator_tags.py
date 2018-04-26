@@ -94,7 +94,6 @@ def ellipsis_or_number(context, paginator, current_page):
         return '...'
 
 
-
 @register.simple_tag
 def size(chosen_size=None):
     """
