@@ -80,7 +80,6 @@ def ellipsis_or_number(context, paginator, current_page):
     :param paginator: paginator_obj
     :param current_page: int
     :return: str or None
-
     """
 
     # Checks is it first page
