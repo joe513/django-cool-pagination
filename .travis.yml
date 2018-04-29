@@ -12,7 +12,7 @@ env:
 
 install:
   - pip install Django==$DJANGO_VERSION --quiet
-  - pip install -r test-requirements.txt
+  - pip install -r tests/test-requirements.txt
 
 before_script:
   - flake8  --ignore=E501
