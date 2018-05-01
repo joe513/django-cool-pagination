@@ -14,6 +14,7 @@ setup(
     include_package_data=True,
     license='MIT License',
     description='Simple pagination app that saves your time.',
+    long_description_content_type='text/markdown',
     long_description=README,
     url='https://github.com/joe513/django-cool-pagination',
     author='Jabrail Lezgintsev',

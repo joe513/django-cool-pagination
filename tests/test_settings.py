@@ -6,8 +6,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fake-key'
 
 INSTALLED_APPS = [
-    'tests',
-    'django_cool_paginator'
+    'django_cool_paginator',
+
 ]
 
 TEMPLATES = [
@@ -17,6 +17,7 @@ TEMPLATES = [
     }
 ]
 
+# For testing purposes.
 
 COOL_PAGINATOR_SIZE = 'SMALL'
 COOL_PAGINATOR_NEXT_NAME = 'Go'
