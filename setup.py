@@ -9,17 +9,21 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-cool-pagination',
-    version='0.2.3',
+    version='0.3.0',
     packages=find_packages(),
     include_package_data=True,
-    license='MIT License',
+    license='MIT',
     description='Simple pagination app that saves your time.',
     long_description_content_type='text/markdown',
     long_description=README,
     url='https://github.com/joe513/django-cool-pagination',
     author='Jabrail Lezgintsev',
     author_email='lezgintsev13@yandex.ru',
-    keywords='python, django, pagination',
+    keywords='python3 django pagination bootstrap4',
+    project_urls={
+        'Source': 'https://github.com/joe513/django-cool-pagination'
+    },
+    python_requires='>=3',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
