@@ -23,7 +23,7 @@ from django import template
 from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
 from django.conf import settings
 
-# TODO To discuss which name is better for the module cool_paginate or cool_pagination
+# TODO Discuss which name is better for the module cool_paginate or cool_pagination
 
 register = template.Library()
 
