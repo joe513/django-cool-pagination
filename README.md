@@ -10,7 +10,7 @@
  **The project is still on development stage, some things may not work properly.**
  
  
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Old_book_bindings.jpg/1280px-Old_book_bindings.jpg" />
+![Usage Example](https://media.giphy.com/media/325f9CboTX86Eqa6he/giphy.gif)
 
 ## Prerequisites
 Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/download) to your project. <br/>
