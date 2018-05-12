@@ -9,15 +9,15 @@
 ## WARNING:
  **The project is still on development stage, some things may not work properly.**
  
- 
+<p align="center" >
+
 ![Usage Example](https://media.giphy.com/media/325f9CboTX86Eqa6he/giphy.gif)
+</p>
 
 ## Prerequisites
 Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/download) to your project. <br/>
-<img class="center" src="https://i.imgur.com/5FK3tt6.png" />
 
 ## Features 
-<img class="center" alt="paris" src="https://i.imgur.com/uMNye7P.png" />
 
    - _Dynamic query string creation_
    - _Length auto control_
