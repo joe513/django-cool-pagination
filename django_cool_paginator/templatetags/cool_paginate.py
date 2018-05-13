@@ -19,9 +19,9 @@ Description:
 """
 
 from django import template
+from django.conf import settings
 
 from django_cool_paginator.exceptions import PageNotSpecified, RequestNotExists
-from django.conf import settings
 
 # TODO Discuss which name is better for the module cool_paginate or cool_pagination
 
