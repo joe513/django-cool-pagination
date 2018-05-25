@@ -29,7 +29,7 @@ register = template.Library()
 
 
 @register.inclusion_tag('__paginator.html', takes_context=True)
-def cool_paginate(context, **kwargs):
+def cool_paginate(context, **kwargs) -> dict:
     """Main function for pagination process."""
 
     names = (

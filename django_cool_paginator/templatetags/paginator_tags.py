@@ -94,7 +94,7 @@ def ellipsis_or_number(context, paginator, current_page):
 
 
 @register.simple_tag
-def size(chosen_size=None):
+def size(chosen_size=None) -> str:
     """
     Points to pagination bar size.
 
