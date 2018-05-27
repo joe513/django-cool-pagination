@@ -1,5 +1,5 @@
 """
-Tags for pagination template which is templates directory
+Tags for pagination template which is in templates directory
 
 These are internal pagination custom tag functions that are needed by paginator template (__paginator.html)
 which is in templates directory. User doesn't have to interact with them. They are designed as internal.
