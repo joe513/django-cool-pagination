@@ -52,7 +52,7 @@ Currently it supports Bootstrap 4.x only. So that you have to add [Bootstrap 4](
 #### FBV (Function based view)
 
     def listing(request):
-        contact_list = Contacts.objects.all()
+        contact_list = Contact.objects.all()
         paginator = Paginator(contact_list, 25)
 
         page = request.GET.get('page')
